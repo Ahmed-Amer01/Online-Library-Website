@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>available books</title>
+    <link rel="stylesheet" href="{% static 'Css Files/Nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'Css Files/BookPages.css' %}" />
+  </head>
+
+  <body>
+    <nav class="AdminNav">
+      <img src="{% static 'Images/logo0.png' %}" class="logo">
+      <ul>
+        <li><a href="{% url 'pagesForAdmin:Home_admin' %}">Home</a></li>
+        <li><a href="{% url 'pagesForAdmin:Add_book' %}">Add new book</a></li>
+        <li><a href="{% url 'pagesForAdmin:Admin_view_all_books' %}">All books</a></li>
+        <li><a href="{% url 'pagesForAdmin:Admin_view_available_books' %}">Available books</a></li>
+        <li><a href="{% url 'pages:Log_out' %}">Log out</a></li>
+      </ul>
+    </nav>
+
+    <div id="the books" class="PageContent">
+        <br /><br />
+        <h1>My Available Books</h1>
+        
+        {% for book in books %}
+          {% if book.available == True %}
+            <div id="{{ book.bookId }}" class="book_rectangle">
+              <img
+                src="{{book.image.url}}"
+                alt="book cover"
+                width="200"
+                height="300"
+              />
+              <div class="book_rectangle_header">
+                <h3><a href="{% url 'pagesForAdmin:Admin_display_book' book.bookId %}" class="Details">{{ book.title }}</a></h3>
+              </div>
+              <div class="book_rectangle_body">
+                <ul>
+                  <li><strong>Status: </strong>{% if book.available == True %}Available{% elif book.available == False %}Not Available{% endif %}</li>
+                  <br>
+                  <li><strong>Id: </strong>{{book.bookId}}</li>
+                  <br>
+                  <li><strong>Author: </strong>{{book.author}}</li>
+                  <br>
+                  <li><strong>Category: </strong>{{book.category}}</li>
+                  <br>
+                  <li>
+                    <strong>Brief Description: </strong>{{book.briefDescription}}</li>
+                  <br>
+                  <li>
+                    <strong>Description: </strong>{{book.description}}</li>
+                </ul>
+              </div>
+              {% if book.available == True %}
+                <a href="{% url 'pagesForAdmin:Edit_book' book.bookId %}"><button><span></span>Edit</button></a>
+                <button onclick="deleteBook('{{book.bookId}}')"><span></span>Delete</button>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% empty %}
+            <p>There is no available books at the moment.</p>
+        {% endfor %}
+
+    </div>
+
+    <script>const csrfToken = "{{ csrf_token }}";</script>
+    <script src="{% static 'Java Script Files/delete.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'Css Files/Nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'Css Files/BookPages.css' %}" />
+  </head>
+  <body>
+    <nav class="AdminNav">
+      <img src="{% static 'Images/logo0.png' %}" class="logo">
+      <ul>
+          <li><a href="{% url 'pagesForAdmin:Home_admin' %}">Home</a></li>
+          <li><a href="{% url 'pagesForAdmin:Add_book' %}">Add new book</a></li>
+          <li><a href="{% url 'pagesForAdmin:Admin_view_all_books' %}">All books</a></li>
+          <li><a href="{% url 'pagesForAdmin:Admin_view_available_books' %}">Available books</a></li>
+          <li><a href="{% url 'pages:Log_out' %}">Log out</a></li>
+      </ul>
+    </nav>
+    <div class="Home">
+      <h1><b>Welcome To Library Website</b></h1>
+      <p>
+        This site serves as a library where you can add new books or borrow them
+      </p>
+    </div>
+  </body>
+</html>

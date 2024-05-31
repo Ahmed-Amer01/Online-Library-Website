@@ -1,0 +1,39 @@
+<!-- name= {{name}} -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'Css Files/Nav.css' %}" />
+  </head>
+  <body>
+    <nav class="Nav">
+      <img src="{% static 'Images/logo0.png' %}" class="logo">
+      <ul>
+          <li><a href="{% url 'pages:Home' %}">Home</a></li>
+          <li><a href="{% url 'pages:Sign_up' %}">Sign Up </a></li>
+          <li><a href="{% url 'pages:Login' %}">Login</a></li>
+      </ul>
+    </nav>
+    <div class="Home">
+      <h1>welcom to library</h1>
+      <p>
+          Reading gives us another place to go when we are forced to stay in our places,
+            and a book is not only a friend, but it makes you friends.
+      </p>
+      <div>
+          <a href="{% url 'pages:Sign_up' %}">
+            <button type="button" class="home">
+                <span></span>SIGN UP
+            </button>
+          </a>
+          <a href="{% url 'pages:Login' %}">
+            <button type="button" class="home">
+                <span></span>LOGIN
+            </button>
+          </a>
+      </div> 
+    </div>
+  </body>
+</html>

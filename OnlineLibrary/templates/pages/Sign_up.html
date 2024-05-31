@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Sign up</title>
+    <link rel="stylesheet" href="{% static 'Css Files/Nav.css' %}" />
+    <link rel="stylesheet" href="{%static 'Css Files/FormPages.css' %}" />
+  </head>
+  <body>
+
+    <nav class="Nav">
+        <img src="{% static 'Images/logo0.png' %}" class="logo">
+        <ul>
+          <li><a href="{% url 'pages:Home' %}">Home</a></li>
+          <li><a href="{% url 'pages:Sign_up' %}">Sign Up </a></li>
+          <li><a href="{% url 'pages:Login' %}">Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="PageContent">
+      <h1>Sign up</h1>
+      <form method="Post" name="signupForm" id="signupForm">
+        {% csrf_token %}
+        <div id="SignUpDiv">
+          <p id="SignUpSuccessful">Your Account has been Successfully created</p>
+          <p id="Existing">The Username is already taken try another one</p>
+          <br>
+          <br>
+        </div>
+        <div>
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Please enter username">
+            <div id="usernameValidationMessage">
+              <ul id="usernameError"></ul>
+            </div>
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" name="password" id="password" placeholder="Please enter password" title="Password must be at least 8 characters long, contain both numbers and letters, and have numbers and letters continuously.">
+            <div id="passwordValidationMessage">
+              <ul id="passwordError"></ul>
+            </div>
+        </div>
+        <div>
+            <label>Repeat Password</label>
+            <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Please enter repeat password">
+            <div id="repeatPasswordValidationMessage">
+              <ul id="repeatPasswordError"></ul>
+            </div>
+        </div>
+        <div>
+            <label>ID</label>
+            <input type="number" name="id" placeholder="Please enter ID">
+            <div id="idUserValidationMessage">
+              <ul id="idUserError"></ul>
+            </div>
+        </div>
+        <div>
+          <label>email</label>
+          <input type="email" name="email" placeholder="Please enter email" title="Enter Your email">
+          <div id="emailValidationMessage">
+            <ul id="emailError"></ul>
+          </div>
+        </div>
+        <label>Choose type of action</label>
+        <select name="typeOfAction" id="typeOfAction">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+        <input type="submit" value="Sign up" onclick="validateSignupForm()">
+      </form>
+    </div>
+    <script src="{% static 'Java Script Files/Validation.js' %}"></script>
+  </body>
+</html>

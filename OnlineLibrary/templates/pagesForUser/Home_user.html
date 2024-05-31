@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'Css Files/Nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'Css Files/BookPages.css' %}" />
+  </head>
+  <body>
+    <nav class="UserNav">
+      <img src="{% static 'Images/logo0.png' %}" class="logo">
+      <ul>
+          <li><a href="{% url 'pagesForUser:Home_user' %}">Home</a></li>
+          <li class="dropdown">
+                <a href="#" class="dropbtn">Books</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'pagesForUser:User_view_all_books' %}">All books</a>
+                    <a href="{% url 'pagesForUser:User_view_available_books' %}">Available books</a>
+                    <a href="{% url 'pagesForUser:User_view_borrowed_books' %}">Borrowed books</a>
+                </div>
+          </li>
+          <li><a href="{% url 'pages:Log_out' %}">Log out</a></li>
+          <li>
+              <form method="POST" action="{% url 'pagesForUser:Search_page' %}">
+                  {% csrf_token %}
+                  <input type="search" name="searched" id="bar" placeholder="Search..">
+                  <select name="Search_by" id="by">
+                      <option name="Author" value="author">Search by Author</option>
+                      <option name="Title" value="title">Search by Title</option>
+                      <option name="Category" value="category">Search by Category</option>
+                  </select>
+                  <button type="submit">Search</button>
+              </form>
+          </li>
+      </ul>
+    </nav>
+    <div class="Home">
+      <h1><b>Welcome To Library Website</b></h1>
+      <p>
+        This site serves as a library where you can add new books or borrow them
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'Css Files/Nav.css' %}" />
+    <link rel="stylesheet" href="{%static 'Css Files/FormPages.css' %}" />
+  </head>
+  <body>
+    <nav class="Nav">
+      <img src="{% static 'Images/logo0.png' %}" class="logo">
+      <ul>
+        <li><a href="{% url 'pages:Home' %}">Home</a></li>
+        <li><a href="{% url 'pages:Sign_up' %}">Sign Up </a></li>
+        <li><a href="{% url 'pages:Login' %}">Login</a></li>
+      </ul>
+    </nav>
+    <div class="PageContent">
+      <h1>Login</h1>
+      <form method="post" class="loginForm" name="loginForm" id="loginForm">
+        {% csrf_token %}
+        <div id="LoginDiv">
+          <p id="invalidUsername">Invalid Username or password</p>
+          <br>
+          <br>
+        </div>
+          <div>
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Please enter username" title="Enter the Username">
+            <div id="usernameValidationMessage">
+              <ul id="usernameError"></ul>
+            </div>
+          </div>
+          <div>
+            <label>Password</label>
+              <input type="password" name="password" placeholder="Please enter password" title="Enter the password">
+              <div id="passwordValidationMessage">
+                <ul id="passwordError"></ul>
+              </div>
+          </div>
+          <div>
+            <input type="submit" id="Login" value="Login" onclick="validateLoginForm()">
+          </div>
+      </form>
+    </div>
+    <script src="{% static 'Java Script Files/Validation.js' %}"></script>
+  </body>
+</html>

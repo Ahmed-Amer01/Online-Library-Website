@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>All books</title>
+    <link rel="stylesheet" href="{% static 'Css Files/Nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'Css Files/BookPages.css' %}" />
+  </head>
+
+  <body>
+    <nav class="UserNav">
+      <img src="{% static 'Images/logo0.png' %}" class="logo">
+      <ul>
+          <li><a href="{% url 'pagesForUser:Home_user' %}">Home</a></li>
+          <li class="dropdown">
+                <a href="#" class="dropbtn">Books</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'pagesForUser:User_view_all_books' %}">All books</a>
+                    <a href="{% url 'pagesForUser:User_view_available_books' %}">Available books</a>
+                    <a href="{% url 'pagesForUser:User_view_borrowed_books' %}">Borrowed books</a>
+                </div>
+            </li>
+          <li><a href="{% url 'pages:Log_out' %}">Log out</a></li>
+          <li>
+              <form method="POST" action="{% url 'pagesForUser:Search_page' %}">
+                  {% csrf_token %}
+                  <input type="search" name="searched" id="bar" placeholder="Search..">
+                  <select name="Search_by" id="by">
+                      <option name="Author" value="author">Search by Author</option>
+                      <option name="Title" value="title">Search by Title</option>
+                      <option name="Category" value="category">Search by Category</option>
+                  </select>
+                  <button type="submit">Search</button>
+              </form>
+          </li>
+      </ul>
+    </nav>
+
+    <div id="the books" class="PageContent">
+        <br /><br />
+        <h1>The List Of All Books</h1>
+        
+        {% for book in books %}
+          <div id="{{ book.bookId }}" class="book_rectangle">
+            <img
+              src="{{book.image.url}}"
+              alt="book cover"
+              width="200"
+              height="300"
+            />
+            <div class="book_rectangle_header">
+              <h3><a href="{% url 'pagesForUser:User_display_book' book.bookId %}" class="Details">{{ book.title }}</a></h3>
+            </div>
+            <div class="book_rectangle_body">
+              <ul>
+                <li><strong>Status: </strong>{% if book.available == True %}Available{% elif book.available == False %}Not Available{% endif %}</li>
+                <br>
+                <li><strong>Author: </strong>{{book.author}}</li>
+                <br>
+                <li><strong>Category: </strong>{{book.category}}</li>
+                <br>
+                <li>
+                  <strong>Brief Description: </strong>{{book.briefDescription}}</li>
+                <br>
+              </ul>
+            </div>
+            {% if book.available == True %}
+              <button onclick="borrowBook('{{book.bookId}}')"><span></span>Borrow</button>
+            {% elif book.available == False and account == book.borrower %}
+              <button class="returnBook" onclick="returnBook('{{book.bookId}}')"><span></span>Return Book</button>
+            {% endif %}
+          </div>
+        {% empty %}
+            <p>There is no books at the moment.</p>
+        {% endfor %}
+
+    </div>
+
+    <script>const csrfToken = "{{ csrf_token }}";</script>
+    <script src="{% static 'Java Script Files/Borrow.js' %}"></script>
+    <script src="{% static 'Java Script Files/Return_Book.js' %}"></script>
+  </body>
+</html>

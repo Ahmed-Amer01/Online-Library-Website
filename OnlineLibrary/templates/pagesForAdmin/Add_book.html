@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Add Book</title>
+    <link rel="stylesheet" href="{% static 'Css Files/Nav.css' %}">
+    <link rel="stylesheet" href="{% static 'Css Files/FormPages.css' %}">
+  </head>
+  <body>
+    <nav class="AdminNav">
+      <img src="{% static 'Images/logo0.png' %}" class="logo">
+      <ul>
+          <li><a href="{% url 'pagesForAdmin:Home_admin' %}">Home</a></li>
+          <li><a href="{% url 'pagesForAdmin:Add_book' %}">Add new book</a></li>
+          <li><a href="{% url 'pagesForAdmin:Admin_view_all_books' %}">All books</a></li>
+          <li><a href="{% url 'pagesForAdmin:Admin_view_available_books' %}">Available books</a></li>
+          <li><a href="{% url 'pages:Log_out' %}">Log out</a></li>
+      </ul>
+    </nav>
+    <div class="PageContent">
+      <h1>Add book</h1>
+      <p class="Note">Please fill out the information of the book you want to add.</h3>
+      <form method="post" name="addBookForm" id="addBookForm">
+        {% csrf_token %}
+        
+        <label for="title">Book Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          autofocus
+          placeholder="Book title"
+          title="Enter the book title"
+        />
+        <div id="titleValidationMessage">
+          <ul id="titleError"></ul>
+        </div>
+        <label for="bookID">ID of the book</label>
+        <input
+          type="number"
+          id="bookID"
+          name="bookID"
+          placeholder="ID"
+          title="Enter the ID (should be numbers)"
+        />
+        <div id="idValidationMessage">
+          <ul id="idError"></ul>
+        </div>
+        <label for="author">Author</label>
+        <input
+          type="text"
+          id="author"
+          name="author"
+          placeholder="Author"
+          title="Enter the author of the book"
+        />
+        <div id="authorValidationMessage">
+          <ul id="authorError"></ul>
+        </div>
+        <label for="Category">Category</label>
+        <input
+          type="text"
+          id="Category"
+          name="Category"
+          placeholder="Category"
+          title="Enter the Category of the book"
+        />
+        <div id="categoryValidationMessage">
+          <ul id="categoryError"></ul>
+        </div>
+        <label for="textarea1">Brief description</label>
+        <textarea
+          id="briefDescription"
+          name="briefDescription"
+          title="Write a brief description of the book"
+          placeholder="Brief description"
+          cols="30"
+          rows="5"
+        ></textarea>
+        <div id="briefDescriptionValidationMessage">
+          <ul id="briefDescriptionError"></ul>
+        </div>
+        <label for="textarea2">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          title="Write a description of the book"
+          placeholder="Description"
+          cols="30"
+          rows="10"
+        ></textarea>
+        <div id="descriptionValidationMessage">
+          <ul id="descriptionError"></ul>
+        </div>
+        <input type="file" id="addImage" name="addImage"/>
+        <label for="addImage">Choose Image</label>
+        {% comment %} <img src="{% static 'Images/accept.png' %}" id="accept"> {% endcomment %}
+        <div id="addImageValidationMessage">
+          <ul id="addImageError"></ul>
+        </div>
+        <br>
+        <div id="AddBookDiv">
+          <p id="AddSuccessful">The book has been added successfully</p>
+          <p id="Existing">The ID is already taken, check it and try again</p>
+          <br>
+          <br>
+        </div>
+        <input type="reset" id="ResetButton" title="To clear all data" />
+        <button
+          type="submit"
+          id="addBookButton"
+          name="addBookButton"
+          value="Add book"
+          title="To add book to the Library"
+          onclick="validateAddBookForm()"
+        >Add book
+        </button>
+      </form>
+    </div>
+    <script src="{% static 'Java Script Files/Validation.js' %}"></script>
+  </body>
+</html>

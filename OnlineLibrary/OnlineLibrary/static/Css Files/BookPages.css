@@ -1,0 +1,154 @@
+/* the content of the page */
+.content , div[class='PageContent']{
+    margin: 1%;
+}
+
+.PageContent{
+    margin: 20px auto;
+    text-align: center;
+    color: #333;
+    align-self: center;
+    background: rgba(207, 200, 200, 0.3); 
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.PageContent h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p{
+    margin: 20px auto;
+    font-weight:100;
+    line-height:25px;
+}
+
+.Details{
+    text-decoration: none;
+    color: #333;
+
+}
+
+.Details:hover {
+    color: #666;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0px 0px 0px 20px;
+}
+
+/* User view available books page*/
+.book_rectangle {
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    max-width: 500px;
+}
+
+.book_rectangle img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.book_rectangle_header {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.book_rectangle_body {
+    text-align: left;
+}
+
+.book_rectangle_body ul {
+    list-style: none;
+    padding: 0;
+}
+
+.book_rectangle_body ul li {
+    margin-bottom: 10px;
+}
+
+.book_rectangle ul li strong {
+    color: #000000;
+    text-align: left;
+}
+/* for edit and delete button */
+/* button {
+    color: white;
+    background-color: #3d3d3d;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    padding: 5px 15px;
+    margin-right: 30px;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button a{
+    text-decoration: none;
+    color: white;
+} */
+
+/* button:hover{
+    cursor: pointer;
+    background-color: #636363;
+} */
+
+span{
+    background: #ffcdd2;
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+button{
+    width:100px;
+    padding:15px 0;
+    text-align: center;
+    margin: 10px 10px;
+    border-radius: 25px;
+    font-weight:bold;
+    border: 2px solid #ffcdd2;
+    background: transparent;
+    color:#fff;
+    cursor:pointer;
+    position: relative;
+    overflow: hidden;
+    margin-right: 30px;
+    display: inline-block;
+}
+
+button a{
+    text-decoration: none;
+    color: white;
+}
+
+button:hover{
+    border:none;
+    cursor: pointer;
+}
+
+button:hover span{
+    width: 100%;
+}

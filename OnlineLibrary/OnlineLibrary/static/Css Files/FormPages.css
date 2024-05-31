@@ -1,0 +1,208 @@
+/* for add Book page */
+.Note{
+    font-size: 130%;
+}
+.PageContent {
+    max-width: 500px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px auto 10px;
+    /* backdrop-filter: blur(10px); */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* 'Resest' button and 'Add book' button*/
+
+#ResetButton , #addBookButton{
+    color: white;
+    background-color: #3d3d3d;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    padding: 5px 15px;
+    margin: 0px 75px;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#ResetButton:hover , #addBookButton:hover{
+    background-color: #636363;
+}
+
+/* choose image button */
+#addImage{
+    display: none;
+}
+
+#addImage + label{
+    padding: 5px 20px;
+    text-align: center;
+    width: 87%;
+    background-color: #3d3d3d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+} 
+
+input#addImage + label:hover{
+    background-color: #636363;
+}
+
+/* #accept{
+    width: 25px;
+    cursor: pointer;
+    display: none;
+} */
+
+/* input data */
+input[type=text] ,input[type=number] , input[type=password] , input[type=email] , textarea , select{
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #3d3d3d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #636363;
+}
+
+/* for login and signup */
+#usernameValidationMessage, #passwordValidationMessage,
+#repeatPasswordValidationMessage, #idUserValidationMessage,
+#emailValidationMessage,
+#SignUpDiv, #SignUpSuccessful, #Existing,
+#LoginDiv, #invalidUsername{
+    display: none;
+}
+
+p[id='SignUpSuccessful']{
+    background-color: #0f8105;
+    border: 1px solid #0e7005;
+    list-style-type: none;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0px 15%;
+    margin-bottom: 10px;
+}
+
+p[id='Existing']{
+    background-color: #ffebe8;
+    border: 1px solid #dd3c10;
+    text-align: center;
+    list-style-type: none;
+    color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0px 13%;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+p[id='invalidUsername']{
+    background-color: #ffebe8;
+    border: 1px solid #dd3c10;
+    text-align: center;
+    list-style-type: none;
+    color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0px 25%;
+    margin-bottom: 10px;
+    display: block;
+}
+
+ul[id='usernameError'], ul[id='passwordError'],
+ul[id='repeatPasswordError'], ul[id='idUserError'], 
+ul[id='emailError']{
+    background-color: #ffebe8;
+    border: 1px solid #dd3c10;
+    color: #000000;
+    list-style-type: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0px;
+    margin-bottom: 2px;
+  }
+
+ul[id='usernameError'] li, ul[id='passwordError'] li,
+ul[id='repeatPasswordError'] li, ul[id='idUserError'] li,
+ul[id='emailError'] li{
+    margin-bottom: 10px;
+}
+
+/* for add and edit book  */
+#titleValidationMessage, #idValidationMessage, #authorValidationMessage,
+#categoryValidationMessage, #briefDescriptionValidationMessage, 
+#descriptionValidationMessage, #addImageValidationMessage,
+#AddBookDiv, #AddSuccessful, #EditBookDiv, #EditSuccessful{
+    display: none;
+}
+
+p[id='AddSuccessful'], p[id='EditSuccessful']{
+    background-color: #0f8105;
+    border: 1px solid #0e7005;
+    list-style-type: none;
+    color: #ffffff;
+    padding: 10px 20%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+ul[id='titleError'], ul[id='idError'], ul[id='authorError'] ,
+ul[id='categoryError'], ul[id='briefDescriptionError'] ,
+ul[id='descriptionError'], ul[id='addImageError']{
+    background-color: #ffebe8;
+    border: 1px solid #dd3c10;
+    color: #000000;
+    list-style-type: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+ul[id='titleError'] li ul[id='idError'] li, ul[id='authorError'] li,
+ul[id='categoryError'] li, ul[id='briefDescriptionError'] li, 
+ul[id='descriptionError'] li, ul[id='addImageError'] li{
+    margin-bottom: 10px;
+}
